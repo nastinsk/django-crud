@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <h2><a href="{% url 'product_new' %}">Make new product</a></h2>
+</div>
+  {% for product in object_list %}
+  <div class="product-entry">
+    <h3><a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a></h3>
+  </div>
+  {% endfor %}
+{% endblock content %}

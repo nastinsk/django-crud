@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="product-entry">
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.description}}</p>
+  </div>
+
+  <div>
+    <h2><a href="{% url 'product_update' product.pk %}">Update product</a></h2>
+  </div>
+
+  <div>
+    <h2><a href="{% url 'product_delete' product.pk %}">Delete product</a></h2>
+  </div>
+
+{% endblock content %}
