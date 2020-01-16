@@ -24,21 +24,21 @@ class StoreAppTests(TestCase):
         product = Product(title='A sample title')
         self.assertEqual(str(product), product.title)
 
-    def test_post_content(self):
+    def test_product_content(self):
         self.assertEqual(f'{self.product.title}', 'A good title')
         self.assertEqual(f'{self.product.manufacturer}', 'testuser')
         self.assertEqual(f'{self.product.description}', 'Nice body content')
 
-    def test_post_list_view(self):
+    def test_product_list_view(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Nice body content')
+        self.assertContains(response, 'A good title')
         self.assertTemplateUsed(response, 'home.html')
 
-    def test_post_detail_view(self):
-        response = self.client.get('/post/1/')
-        no_response = self.client.get('/post/100000/')
+    def test_product_detail_view(self):
+        response = self.client.get('/product/1/')
+        no_response = self.client.get('/product/100000/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, 'A good title')
-        self.assertTemplateUsed(response, 'post_detail.html')
+        self.assertTemplateUsed(response, 'product_detail.html')
