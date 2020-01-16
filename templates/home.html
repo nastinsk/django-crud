@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% for post in object_list %}
-  <div class="post-entry">
-    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-    <p>{{ post.body }}</p>
+  {% for product in object_list %}
+  <div class="product-entry">
+    <h2><a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a></h2>
+    <!-- <p>{{ product.description }}</p> -->
   </div>
   {% endfor %}
 {% endblock content %}

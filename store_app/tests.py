@@ -2,10 +2,10 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Post
+from .models import Product
 
 
-class BlogTests(TestCase):
+class StoreAppTests(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
@@ -14,20 +14,20 @@ class BlogTests(TestCase):
             password='secret'
         )
 
-        self.post = Post.objects.create(
+        self.product = Product.objects.create(
             title='A good title',
-            body='Nice body content',
-            author=self.user,
+            description='Nice body content',
+            manufacturer=self.user,
         )
 
     def test_string_representation(self):
-        post = Post(title='A sample title')
-        self.assertEqual(str(post), post.title)
+        product = Product(title='A sample title')
+        self.assertEqual(str(product), product.title)
 
     def test_post_content(self):
-        self.assertEqual(f'{self.post.title}', 'A good title')
-        self.assertEqual(f'{self.post.author}', 'testuser')
-        self.assertEqual(f'{self.post.body}', 'Nice body content')
+        self.assertEqual(f'{self.product.title}', 'A good title')
+        self.assertEqual(f'{self.product.manufacturer}', 'testuser')
+        self.assertEqual(f'{self.product.description}', 'Nice body content')
 
     def test_post_list_view(self):
         response = self.client.get(reverse('home'))
