@@ -1,4 +1,4 @@
-# Django Curd
+# Django CRUD
 
 **Author**: Anastasia Lebedeva
 
